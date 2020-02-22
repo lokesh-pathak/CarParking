@@ -5,7 +5,7 @@ from django.conf import settings
 # Create your models here.
 class Vehicle(models.Model):
     registration_number = models.CharField(max_length=20, blank=True, null=True)
-    colour = models.CharField(max_length=20, blank=True, null=True)
+    color = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         db_table = 'vehicle'
