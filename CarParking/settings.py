@@ -122,5 +122,5 @@ STATIC_URL = '/static/'
 
 STATUSES = (
     ('available', 'Available'),
-    ('unavailable', 'Unavailable'),
+    ('occupied', 'Occupied'),
 )
