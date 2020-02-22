@@ -46,7 +46,7 @@ class Command(BaseCommand):
         print("Creating Dummy Data....")
         print("Enter number of parking spaces you want to create")
         number_of_slots = int(input())
-        print("Enter number of cars currently in the parking lot")
+        print("Enter number of cars currently in the parking slot")
         number_of_vehicles = int(input())
         self.create_dumy_entry(number_of_slots, number_of_vehicles)
         print("Data Created Successfully....")
