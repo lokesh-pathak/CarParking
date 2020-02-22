@@ -21,7 +21,7 @@ class Slot(models.Model):
 
 class Parking(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
-    slot = models.ForeignKey(Slot)
+    slot = models.ForeignKey(Slot, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'parking'
