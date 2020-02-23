@@ -17,7 +17,7 @@ class IndexView(generic.ListView):
         """Return the allotted parked vehicles """
         return Parking.objects.all().order_by('-id')
 
-
+from django.shortcuts import render
 class VehicleEntryView(FormView):
     template_name = 'vehicle.html'
     form_class = VehicleForm
@@ -50,7 +50,9 @@ class VehicleEntryView(FormView):
             # To update slot status from available to occupied
             slot.status = settings.STATUSES[1][0]
             slot.save()
-        return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/')
+        else:
+            raise ValueError(form.errors)
 
 
 def vehicle_exiting(request):
