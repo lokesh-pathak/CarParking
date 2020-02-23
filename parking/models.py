@@ -1,5 +1,5 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
 
 
 # Create your models here.
@@ -12,7 +12,7 @@ class Vehicle(models.Model):
 
 
 class Slot(models.Model):
-    position = models.IntegerField(blank=True, null =True)
+    position = models.IntegerField(blank=True, null=True)
     status = models.CharField(max_length=12, choices=settings.STATUSES, default=settings.STATUSES[0][0])
 
     class Meta:
