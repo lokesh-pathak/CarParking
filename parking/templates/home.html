@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn btn-danger">
+    <a href="/vehicle/"><b>Create Parking Entry</b></a>
+</button>
+{%if parked_vehicle_list%}
+<table border="1">
+    <tr>
+        <th>Vehicle Number</th>
+        <th>Vehicle color</th>
+        <th>Parked Position</th>
+        <th>Action</th>
+    </tr>
+    {% for vehicle in parked_vehicle_list%}
+    <tr>
+        <td>
+            <center>{{vehicle.vehicle.registration_number}}</center>
+        </td>
+        <td>
+            <center>{{vehicle.vehicle.color}}</center>
+        </td>
+        <td>
+            <center>{{vehicle.slot.position}}</center>
+        </td>
+        <td>
+            <button class="btn btn-danger">
+                <a href="{% url 'remove' %}?id={{ vehicle.vehicle.id }}" title="Delete" type="button"><b>Remove</b></a>
+            </button>
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+{% else %}
+<p>No vehicle is parked</p>
+{%endif%}
+</body>
+</html>
