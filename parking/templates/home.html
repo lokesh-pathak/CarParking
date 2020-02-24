@@ -7,6 +7,10 @@
 <button class="btn btn-danger">
     <a href="/vehicle/"><b>Create Parking Entry</b></a>
 </button>
+<form action="{% url 'index' %}" method="GET" style="margin: 0">
+    <input name="search" placeholder="Search..." value="{{request.GET.search}}">
+    <button class="btn btn-success" type="submit">Submit</button>
+</form>
 {%if parked_vehicle_list%}
 <table border="1">
     <tr>

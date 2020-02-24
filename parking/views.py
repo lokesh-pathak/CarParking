@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.views.generic.edit import FormView
@@ -15,9 +16,12 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the allotted parked vehicles """
-        return Parking.objects.all().order_by('-id')
+        return Parking.objects.filter(vehicle__in=Vehicle.objects.filter(
+            Q(registration_number__iexact=self.request.GET.get('search')) | Q(
+                color__iexact=self.request.GET.get('search')))).order_by('-id') if self.request.GET.get(
+            'search') else Parking.objects.all().order_by('-id')
 
-from django.shortcuts import render
+
 class VehicleEntryView(FormView):
     template_name = 'vehicle.html'
     form_class = VehicleForm
