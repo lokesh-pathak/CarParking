@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db.models import Q
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.views import generic
 from django.views.generic.edit import FormView
 
@@ -56,7 +56,7 @@ class VehicleEntryView(FormView):
             slot.save()
             return HttpResponseRedirect('/index/')
         else:
-            raise ValueError(form.errors)
+            return HttpResponseBadRequest(form.errors['registration_number'])
 
 
 def vehicle_exiting(request):
