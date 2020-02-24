@@ -72,6 +72,6 @@ def vehicle_exiting(request):
             status=settings.STATUSES[0][0])
         # To delete the vehicle entry
         Vehicle.objects.filter(id=request.GET.get('id')).delete()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/index/')
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/index/')
