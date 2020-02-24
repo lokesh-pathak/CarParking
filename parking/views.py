@@ -54,7 +54,7 @@ class VehicleEntryView(FormView):
             # To update slot status from available to occupied
             slot.status = settings.STATUSES[1][0]
             slot.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/index/')
         else:
             raise ValueError(form.errors)
 
